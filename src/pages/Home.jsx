@@ -9,7 +9,8 @@ export default function Home() {
         </h1>
 
         <p className="text-lg text-[#2c2c2c]">
-          Seamlessly manage and process your timesheets.
+          Meet2Sheet is an intelligent assistant that transforms your daily
+          scrum meeting discussing into accurate timesheet entries.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
