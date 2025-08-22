@@ -3,30 +3,29 @@ import Card from "../components/Card";
 export default function Home() {
   const features = [
     {
-      title: "Accurate Transcription",
-      description: "Transcribes your daily scrum meetings with high accuracy.",
+      title: "Automatic Updates",
+      description:
+        "Timesheets are updated in real-time, eliminating manual effort.",
     },
     {
-      title: "Auto Timesheet Generator",
-      description:
-        "Automatically converts meeting insights into timesheet entries.",
+      title: "Intelligent Task Interpretation",
+      description: "Accurate descriptions extracted from meeting dialogues.",
     },
     {
-      title: "Simple UI",
-      description:
-        "Clean and intuitive interface to view and process transcripts.",
+      title: "Precision Logging",
+      description: "Guaranteed accuracy for hours and task details.",
     },
     {
       title: "Productivity Boost",
       description: "Eliminates manual entry to save time and effort.",
     },
     {
-      title: "Secure Data Handling",
-      description: "Ensures all transcripts and data are handled securely.",
+      title: "Seamless Zoho Integration",
+      description: "Direct API connection for effortless data transfer.",
     },
     {
-      title: "Seamless Workflow",
-      description: "Integrates smoothly with your daily standup routines.",
+      title: "Comprehensive Task Capture",
+      description: "Ensures no completed tasks are overlooked or forgotten.",
     },
   ];
   return (
@@ -62,7 +61,7 @@ export default function Home() {
         </div>{" "}
       </div>
       {/* Features Section */}{" "}
-      <div className="mt-20 max-w-6xl w-full px-4">
+      <div className="mt-40 mb-40 max-w-6xl w-full px-4">
         {" "}
         <h2 className="text-3xl font-bold text-center mb-10 text-[#fc8673]">
           {" "}
