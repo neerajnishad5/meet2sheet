@@ -61,7 +61,7 @@ export default function Home() {
         </div>{" "}
       </div>
       {/* Features Section */}{" "}
-      <div className="mt-40 mb-40 max-w-6xl w-full px-4">
+      <div className="mt-40 lg:mb-40 max-w-6xl w-full px-4">
         {" "}
         <h2 className="text-3xl font-bold text-center mb-10 text-[#fc8673]">
           {" "}
