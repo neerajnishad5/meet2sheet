@@ -1,7 +1,5 @@
-import React from "react";
-
 function Meetings() {
-  return <div>Meetings page</div>;
+  return <div className="min-h-full">Meetings page</div>;
 }
 
 export default Meetings;

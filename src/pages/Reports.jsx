@@ -1,9 +1,8 @@
-import React from "react";
 
 function Reports() {
   return (
     <div>
-      <p>Reports page</p>
+      <p className="min-h-full">Reports page</p>
     </div>
   );
 }

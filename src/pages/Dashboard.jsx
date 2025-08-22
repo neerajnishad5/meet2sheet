@@ -1,9 +1,5 @@
-import React from 'react'
-
 function Dashboard() {
-  return (
-    <div>Dashboard page</div>
-  )
+  return <div className="min-h-full">Dashboard page</div>;
 }
 
-export default Dashboard
+export default Dashboard;
