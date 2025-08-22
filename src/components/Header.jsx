@@ -1,14 +1,16 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const navigate = useNavigate();
   return (
     <header className="w-full bg-[#fc8673] text-white shadow-md">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <h1 className="text-2xl font-bold">Meet2Sheet</h1>
+        <h1 className="text-2xl font-bold hover:cursor-pointer" onClick={() => navigate("/")}>
+          Meet2Sheet
+        </h1>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8 font-medium">
