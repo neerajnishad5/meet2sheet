@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { HashLoader } from "react-spinners";
+import { useNavigate } from "react-router-dom"; // 👈 Import useNavigate
 import axios from "axios";
 
 export default function ProcessTranscript() {
   const [path, setPath] = useState("");
   const [status, setStatus] = useState("idle"); // idle | processing | success | error
+  const navigate = useNavigate(); // 👈 Initialize navigate
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -63,9 +65,17 @@ export default function ProcessTranscript() {
         )}
 
         {status === "success" && (
-          <p className="text-green-600 font-bold">
-            ✅ Done! Transcript processed successfully.
-          </p>
+          <div className="space-y-4">
+            <p className="text-green-600 font-bold">
+              ✅ Done! Transcript processed successfully.
+            </p>
+            <button
+              onClick={() => navigate("/")}
+              className="px-6 py-3 bg-[#fc8673] text-white font-medium rounded-lg hover:bg-[#f2705d] transition hover:cursor-pointer"
+            >
+              Go to Home
+            </button>
+          </div>
         )}
 
         {status === "error" && (
