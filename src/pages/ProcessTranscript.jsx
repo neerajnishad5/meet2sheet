@@ -33,7 +33,12 @@ export default function ProcessTranscript() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fff5f3] flex items-center justify-center px-4">
+    <div
+      className=" bg-[#fff5f3] flex items-center justify-center px-4"
+      style={{
+        minHeight: "80vh",
+      }}
+    >
       <div className="bg-white shadow-xl p-8 rounded-xl w-full max-w-lg text-center space-y-6">
         <h2 className="text-3xl font-bold text-[#fc8673]">
           Process Transcript
