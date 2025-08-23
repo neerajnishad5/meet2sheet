@@ -24,7 +24,12 @@ export default function ViewTranscript() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#fff5f3] flex items-center justify-center px-4 py-8 sm:px-6 lg:px-8">
+    <div
+      className="min-h-screen bg-[#fff5f3] flex items-center justify-center px-4 py-8 sm:px-6 lg:px-8"
+      style={{
+        maxWidth: "100%",
+      }}
+    >
       <div className="bg-white shadow-xl p-6 sm:p-8 rounded-xl w-full max-w-2xl space-y-6">
         <h2 className="text-2xl sm:text-3xl font-bold text-[#fc8673] text-center">
           Transcript Data
