@@ -1,7 +1,13 @@
 export default function Reports() {
   return (
-    <div>
-      <p className="min-h-full">Reports page</p>
+    <div
+      style={{
+        minHeight: "80vh",
+        minWidth: "100%",
+      }}
+      className="flex justify-center items-center"
+    >
+      <p className="text-3xl font-semibold">Reports page</p>
     </div>
   );
 }
