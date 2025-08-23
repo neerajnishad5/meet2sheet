@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { HashLoader } from "react-spinners";
 import axios from "axios";
+
 export default function ViewTranscript() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -10,7 +11,7 @@ export default function ViewTranscript() {
       setLoading(true);
       try {
         const response = await axios.get(
-          "https://jsonplaceholder.typicode.com/posts/1"
+          "https://jsonplaceholder.typicode.com/posts/2"
         );
         setData(response.data);
       } catch (error) {
@@ -25,9 +26,10 @@ export default function ViewTranscript() {
 
   return (
     <div
-      className="min-h-screen bg-[#fff5f3] flex items-center justify-center px-4 py-8 sm:px-6 lg:px-8"
+      className=" bg-[#fff5f3] flex items-center justify-center px-4 py-8 sm:px-6 lg:px-8"
       style={{
         maxWidth: "100%",
+        minHeight: "80vh",
       }}
     >
       <div className="bg-white shadow-xl p-6 sm:p-8 rounded-xl w-full max-w-2xl space-y-6">
