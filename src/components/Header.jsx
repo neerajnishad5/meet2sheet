@@ -4,56 +4,49 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
-  const currentPath = location.pathname;
+  const { pathname: currentPath } = useLocation();
+
+  const navLinks = [
+    { to: "/", label: "Home" },
+    { to: "/dashboard", label: "Dashboard" },
+    { to: "/meetings", label: "Meetings" },
+    { to: "/reports", label: "Reports" },
+  ];
+
+  const getLinkClasses = (path) =>
+    `hover:text-gray-200 transition px-2 py-1 ${
+      currentPath === path ? "border border-white rounded-md" : ""
+    }`;
+
+  const handleNavClick = (to) => {
+    setMenuOpen(false);
+    navigate(to);
+  };
 
   return (
     <header className="w-full bg-[#fc8673] text-white shadow-md">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <h1
-          className="text-2xl font-bold hover:cursor-pointer"
-          onClick={() => navigate("/")}
+          className="text-2xl font-bold cursor-pointer"
+          onClick={() => handleNavClick("/")}
         >
           Meet2Sheet
         </h1>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-8 font-medium">
-          <Link
-            to="/dashboard"
-            className={`hover:text-gray-200 transition px-2 py-1 ${
-              currentPath === "/dashboard"
-                ? "border border-white rounded-md"
-                : ""
-            }`}
-          >
-            Dashboard
-          </Link>
-          <Link
-            to="/meetings"
-            className={`hover:text-gray-200 transition px-2 py-1 ${
-              currentPath === "/meetings"
-                ? "border border-white rounded-md"
-                : ""
-            }`}
-          >
-            Meetings
-          </Link>
-          <Link
-            to="/reports"
-            className={`hover:text-gray-200 transition px-2 py-1 ${
-              currentPath === "/reports" ? "border border-white rounded-md" : ""
-            }`}
-          >
-            Reports
-          </Link>
+        <nav className="hidden md:flex space-x-4 font-medium">
+          {navLinks.map(({ to, label }) => (
+            <Link key={to} to={to} className={getLinkClasses(to)}>
+              {label}
+            </Link>
+          ))}
         </nav>
 
-        {/* Hamburger Icon (Mobile) */}
+        {/* Hamburger Icon */}
         <button
           className="md:hidden focus:outline-none hover:cursor-pointer"
-          onClick={() => setMenuOpen(!menuOpen)}
+          onClick={() => setMenuOpen((prev) => !prev)}
           aria-label="Toggle menu"
         >
           <svg
@@ -85,38 +78,16 @@ export default function Header() {
         }`}
       >
         <div className="px-6 pb-4 flex flex-col space-y-3 font-medium">
-          <Link
-            to="/dashboard"
-            onClick={() => setMenuOpen(false)}
-            className={`hover:text-gray-200 transition p-1 ${
-              currentPath === "/dashboard"
-                ? "border border-white rounded-md"
-                : ""
-            }`}
-          >
-            Dashboard
-          </Link>
-
-          <Link
-            to="/meetings"
-            onClick={() => setMenuOpen(false)}
-            className={`hover:text-gray-200 transition p-1 ${
-              currentPath === "/meetings"
-                ? "border border-white rounded-md"
-                : ""
-            }`}
-          >
-            Meetings
-          </Link>
-          <Link
-            to="/reports"
-            onClick={() => setMenuOpen(false)}
-            className={`hover:text-gray-200 transition p-1 ${
-              currentPath === "/reports" ? "border border-white rounded-md" : ""
-            }`}
-          >
-            Reports
-          </Link>
+          {navLinks.map(({ to, label }) => (
+            <Link
+              key={to}
+              to={to}
+              onClick={() => handleNavClick(to)}
+              className={getLinkClasses(to)}
+            >
+              {label}
+            </Link>
+          ))}
         </div>
       </div>
     </header>
