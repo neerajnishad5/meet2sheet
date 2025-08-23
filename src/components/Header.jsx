@@ -1,26 +1,51 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const currentPath = location.pathname;
+
   return (
     <header className="w-full bg-[#fc8673] text-white shadow-md">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <h1 className="text-2xl font-bold hover:cursor-pointer" onClick={() => navigate("/")}>
+        <h1
+          className="text-2xl font-bold hover:cursor-pointer"
+          onClick={() => navigate("/")}
+        >
           Meet2Sheet
         </h1>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8 font-medium">
-          <Link to="/dashboard" className="hover:text-gray-200 transition">
+          <Link
+            to="/dashboard"
+            className={`hover:text-gray-200 transition px-2 py-1 ${
+              currentPath === "/dashboard"
+                ? "border border-white rounded-md"
+                : ""
+            }`}
+          >
             Dashboard
           </Link>
-          <Link to="/meetings" className="hover:text-gray-200 transition">
+          <Link
+            to="/meetings"
+            className={`hover:text-gray-200 transition px-2 py-1 ${
+              currentPath === "/meetings"
+                ? "border border-white rounded-md"
+                : ""
+            }`}
+          >
             Meetings
           </Link>
-          <Link to="/reports" className="hover:text-gray-200 transition">
+          <Link
+            to="/reports"
+            className={`hover:text-gray-200 transition px-2 py-1 ${
+              currentPath === "/reports" ? "border border-white rounded-md" : ""
+            }`}
+          >
             Reports
           </Link>
         </nav>
@@ -63,21 +88,32 @@ export default function Header() {
           <Link
             to="/dashboard"
             onClick={() => setMenuOpen(false)}
-            className="hover:text-gray-200 transition"
+            className={`hover:text-gray-200 transition p-1 ${
+              currentPath === "/dashboard"
+                ? "border border-white rounded-md"
+                : ""
+            }`}
           >
             Dashboard
           </Link>
+
           <Link
             to="/meetings"
             onClick={() => setMenuOpen(false)}
-            className="hover:text-gray-200 transition"
+            className={`hover:text-gray-200 transition p-1 ${
+              currentPath === "/meetings"
+                ? "border border-white rounded-md"
+                : ""
+            }`}
           >
             Meetings
           </Link>
           <Link
             to="/reports"
             onClick={() => setMenuOpen(false)}
-            className="hover:text-gray-200 transition"
+            className={`hover:text-gray-200 transition p-1 ${
+              currentPath === "/reports" ? "border border-white rounded-md" : ""
+            }`}
           >
             Reports
           </Link>

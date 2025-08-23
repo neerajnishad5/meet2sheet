@@ -1,5 +1,7 @@
-function Meetings() {
-  return <div className="min-h-full">Meetings page</div>;
+export default function Meetings() {
+  return (
+    <div className="bg-amber-200">
+      <p>Meetings page</p>
+    </div>
+  );
 }
-
-export default Meetings;
