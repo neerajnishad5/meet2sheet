@@ -24,7 +24,11 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full bg-[#fc8673] text-white shadow-md">
+    <header
+      className={`w-full bg-[#fc8673] text-white shadow-md ${
+        menuOpen && "pb-4 md:pb-0"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <h1
