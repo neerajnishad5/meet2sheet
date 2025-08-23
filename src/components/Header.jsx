@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { RxCross2 } from "react-icons/rx";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,7 +18,9 @@ export default function Header() {
 
   const getLinkClasses = (path) =>
     `hover:text-gray-200 transition px-2 py-1 ${
-      currentPath === path ? "border border-white rounded-md" : ""
+      currentPath === path
+        ? "border border-white dark:border-gray-300 rounded-md"
+        : ""
     }`;
 
   const handleNavClick = (to) => {
@@ -23,9 +28,24 @@ export default function Header() {
     navigate(to);
   };
 
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("theme") === "dark"
+  );
+
+  const toggleDarkMode = () => {
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    localStorage.setItem("theme", newMode ? "dark" : "light");
+  };
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    root.classList.toggle("dark", darkMode);
+  }, [darkMode]);
+
   return (
     <header
-      className={`w-full bg-[#fc8673] text-white shadow-md ${
+      className={`w-full  bg-[#fc8673] text-white shadow-md ${
         menuOpen && "pb-4 md:pb-0"
       }`}
     >
@@ -45,32 +65,45 @@ export default function Header() {
               {label}
             </Link>
           ))}
+
+          {/* Dark Mode Toggle Button */}
+          <button
+            onClick={toggleDarkMode}
+            className="ml-4 p-2 rounded-md hover:bg-white/10 transition hover:cursor-pointer"
+            aria-label="Toggle dark mode"
+          >
+            {darkMode ? (
+              <MdOutlineLightMode size="20" />
+            ) : (
+              <MdOutlineDarkMode size="20" />
+            )}
+          </button>
         </nav>
 
-        {/* Hamburger Icon */}
-        <button
-          className="md:hidden focus:outline-none hover:cursor-pointer"
-          onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label="Toggle menu"
-        >
-          <svg
-            className="w-6 h-6 transition-transform duration-300 ease-in-out"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
+        {/* Mobile Dark Mode Toggle + Hamburger Icon  */}
+        <div className="md:hidden flex items-center space-x-4">
+          {/* Dark Mode Toggle Button for Mobile */}
+          <button
+            onClick={toggleDarkMode}
+            className="p-2 rounded-md hover:bg-white/10 transition hover:cursor-pointer"
+            aria-label="Toggle dark mode"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d={
-                menuOpen
-                  ? "M6 18L18 6M6 6l12 12" // X icon
-                  : "M4 6h16M4 12h16M4 18h16" // Hamburger icon
-              }
-            />
-          </svg>
-        </button>
+            {darkMode ? (
+              <MdOutlineLightMode size="20" />
+            ) : (
+              <MdOutlineDarkMode size="20" />
+            )}
+          </button>
+
+          {/* Hamburger Icon */}
+          <button
+            className="focus:outline-none hover:cursor-pointer"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <RxCross2 size="25" /> : <GiHamburgerMenu size="20" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Navigation Menu */}
