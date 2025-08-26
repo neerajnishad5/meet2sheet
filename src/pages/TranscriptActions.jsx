@@ -37,7 +37,6 @@ export default function TranscriptActions() {
           { headers: { "Content-Type": "application/json" } }
         );
       }
-      console.log("res data: ", res.data);
 
       setResult({ endpoint, data: res.data });
     } catch (err) {
