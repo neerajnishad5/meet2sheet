@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import Card from "../components/Card";
+const nodejsUrl =  import.meta.env.VITE_NODEJS_URL
+
 export default function Home() {
   const features = [
     {
@@ -33,15 +35,24 @@ export default function Home() {
       {" "}
       <div className="max-w-xl w-full text-center space-y-8">
         {" "}
+        <button
+          onClick={() => {
+            window.location.href = `${nodejsUrl}/api/auth`;
+          }}
+          className="px-6 py-3 bg-[#6dd3ce] text-white font-medium rounded-lg shadow hover:bg-[#57bcb7] transition hover:cursor-pointer"
+        >
+          {" "}
+          Authenticate with Zoho{" "}
+        </button>{" "}
         <h1 className="text-4xl md:text-5xl font-extrabold text-[#fc8673]">
           {" "}
           Welcome to Meet2Sheet: AI-Powered Automation{" "}
-        </h1>
+        </h1>{" "}
         <p className="text-lg text-[#2c2c2c]">
           {" "}
           Meet2Sheet is an intelligent assistant that transforms your daily
           scrum meeting discussions into accurate timesheet entries.{" "}
-        </p>
+        </p>{" "}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           {" "}
           <Link
@@ -50,7 +61,7 @@ export default function Home() {
           >
             {" "}
             View Transcript{" "}
-          </Link>
+          </Link>{" "}
           <Link
             to="/summarize-transcript"
             className="px-6 py-3 bg-[#6dd3ce] text-white font-medium rounded-lg shadow hover:bg-[#57bcb7] transition"
@@ -59,14 +70,14 @@ export default function Home() {
             Summarize Transcript{" "}
           </Link>{" "}
         </div>{" "}
-      </div>
+      </div>{" "}
       {/* Features Section */}{" "}
       <div className="mt-40 lg:mb-40 max-w-6xl w-full px-4">
         {" "}
         <h2 className="text-3xl font-bold text-center mb-10 text-[#fc8673]">
           {" "}
           Key Features of Meet2Sheet{" "}
-        </h2>
+        </h2>{" "}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {" "}
           {features.map((feature, index) => (
