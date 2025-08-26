@@ -1,15 +1,13 @@
 import Home from "./pages/Home";
-import ViewTranscript from "./pages/ViewTranscript";
-import ProcessTranscript from "./pages/ProcessTranscript";
 import Meetings from "./pages/Meetings";
 import Dashboard from "./pages/Dashboard";
 import Reports from "./pages/Reports";
 import TranscriptActions from "./pages/TranscriptActions";
+import SummarizeTranscript from "./pages/SummarizeTranscript";
 
 const routes = [
   { path: "/", element: <Home /> },
-  // { path: "/view-transcript", element: <ViewTranscript /> },
-  { path: "/process-transcript", element: <ProcessTranscript /> },
+  { path: "/summarize-transcript", element: <SummarizeTranscript /> },
   { path: "/view-transcript", element: <TranscriptActions /> },
   { path: "/meetings", element: <Meetings /> },
   { path: "/dashboard", element: <Dashboard /> },

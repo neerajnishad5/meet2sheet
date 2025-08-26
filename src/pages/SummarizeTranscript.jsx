@@ -2,15 +2,12 @@ import { useState } from "react";
 import { HashLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-const baseUrl = import.meta.env.VITE_BASE_URL;
 
-export default function ProcessTranscript() {
+export default function SummarizeTranscript() {
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState("idle"); // idle | processing | success | error
-  const [result, setResult] = useState(null); // ⬅️ store API response
+  const [result, setResult] = useState(null);   // ⬅️ store API response
   const navigate = useNavigate();
-
-  console.log(baseUrl);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,7 +20,7 @@ export default function ProcessTranscript() {
       formData.append("vtt_file", file);
 
       const res = await axios.post(
-        `${baseUrl}/process-and-summarize`,
+        "http://127.0.0.1:5001/process-and-summarize",
         formData,
         {
           headers: {
@@ -33,7 +30,7 @@ export default function ProcessTranscript() {
       );
 
       if (res.status === 200 || res.status === 201) {
-        setResult(res.data); // ⬅️ store the whole API response
+        setResult(res.data);   // ⬅️ store the whole API response
         setStatus("success");
       } else {
         setStatus("error");
@@ -50,9 +47,7 @@ export default function ProcessTranscript() {
       style={{ minHeight: "80vh" }}
     >
       <div className="bg-white shadow-xl p-8 rounded-xl w-full max-w-2xl text-center space-y-6">
-        <h2 className="text-3xl font-bold text-[#fc8673]">
-          Process & Summarize Transcript
-        </h2>
+        <h2 className="text-3xl font-bold text-[#fc8673]">Summarize Transcript</h2>
 
         {/* IDLE STATE */}
         {status === "idle" && (
@@ -84,7 +79,7 @@ export default function ProcessTranscript() {
         {status === "success" && result && (
           <div className="space-y-6 text-left">
             <p className="text-green-600 font-bold text-center">
-              ✅ {result.message}
+              ✅ Transcript summaries generated successfully
             </p>
 
             {/* Summaries */}
@@ -101,9 +96,7 @@ export default function ProcessTranscript() {
                     {data.tasks.map((task, index) => (
                       <li key={index}>
                         <span className="font-medium">{task.description}</span>{" "}
-                        <span className="text-gray-500">
-                          ({task.hours} hrs)
-                        </span>
+                        <span className="text-gray-500">({task.hours} hrs)</span>
                       </li>
                     ))}
                   </ul>
@@ -125,7 +118,7 @@ export default function ProcessTranscript() {
         {/* ERROR */}
         {status === "error" && (
           <p className="text-red-500 font-bold">
-            ❌ Failed to process transcript. Try again.
+            ❌ Failed to summarize transcript. Try again.
           </p>
         )}
       </div>

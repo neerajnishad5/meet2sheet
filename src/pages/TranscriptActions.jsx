@@ -15,7 +15,6 @@ export default function TranscriptActions() {
     setLoading(true);
     setError(null);
     setResult(null);
-
     try {
       let res;
       if (method === "GET") {
@@ -105,11 +104,29 @@ export default function TranscriptActions() {
       );
     }
 
-    // 3. Process Transcript (logs)
     if (endpoint === "/api/process-transcript") {
       return (
-        <div className="bg-black text-green-400 p-4 rounded-lg font-mono text-xs whitespace-pre-wrap max-h-96 overflow-auto">
-          {data.output}
+        <div className="p-6 rounded-xl bg-gray-50 border border-gray-200 shadow-sm max-h-96 overflow-auto">
+          <h2 className="text-lg font-semibold text-gray-800 mb-2 flex items-center">
+            <svg
+              className="w-5 h-5 text-green-500 mr-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+            Transcript Processed
+          </h2>
+          <p className="text-gray-700 mb-1">
+            ✅ Processed transcript successfully.
+          </p>
+          <p className="text-gray-700">🕒 Time logs added in Zoho.</p>
         </div>
       );
     }

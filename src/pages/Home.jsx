@@ -52,11 +52,11 @@ export default function Home() {
             View Transcript{" "}
           </Link>
           <Link
-            to="/process-transcript"
+            to="/summarize-transcript"
             className="px-6 py-3 bg-[#6dd3ce] text-white font-medium rounded-lg shadow hover:bg-[#57bcb7] transition"
           >
             {" "}
-            Process Transcript{" "}
+            Summarize Transcript{" "}
           </Link>{" "}
         </div>{" "}
       </div>
